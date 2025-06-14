@@ -16,7 +16,7 @@ jobs:
         ports:
           - 5432:5432
         options: >-
-          --health-cmd="pg_isready"
+          --health-cmd="pg_isready -U user"
           --health-interval=10s
           --health-timeout=5s
           --health-retries=5
@@ -25,7 +25,8 @@ jobs:
       DATABASE_URL: postgresql://user:password@localhost:5432/users_db
 
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v3
 
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -37,8 +38,21 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
+      - name: Wait for Postgres to be ready
+        run: |
+          echo "Waiting for database..."
+          sleep 10
+          pg_isready -h localhost -p 5432 -U user
+
       - name: Seed test data
         run: python tests/seed_test_db.py
 
-      - name: Run tests
-        run: pytest
+      - name: Lint with flake8
+        run: |
+          pip install flake8
+          flake8 app tests
+
+      - name: Run tests with coverage
+        run: |
+          pip install pytest pytest-cov
+          pytest --cov=app --cov-report=term-missing

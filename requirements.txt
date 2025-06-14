@@ -4,3 +4,7 @@ psycopg2-binary
 sqlalchemy
 pytest
 faker
+pytest
+pytest-cov
+flake8
+httpx
