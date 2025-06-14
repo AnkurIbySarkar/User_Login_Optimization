@@ -5,6 +5,7 @@ from app.models import Base, User
 
 @pytest.fixture(scope="session", autouse=True)
 def seed_test_data():
+    print("Seeding test data...")
     Base.metadata.drop_all(bind=engine)
     Base.metadata.create_all(bind=engine)
 
