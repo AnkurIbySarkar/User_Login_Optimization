@@ -16,7 +16,3 @@ def seed_test_data():
     session.add_all(test_users)
     session.commit()
     session.close()
-
-
-if __name__ == "__main__":
-    seed_test_data()

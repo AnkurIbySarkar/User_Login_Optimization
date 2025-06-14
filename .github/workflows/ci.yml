@@ -83,8 +83,6 @@ jobs:
       - name: Set PYTHONPATH
         run: echo "PYTHONPATH=$GITHUB_WORKSPACE" >> $GITHUB_ENV
 
-      - name: Seed test database
-        run: python tests/seed_test_db.py
 
   test:
     runs-on: ubuntu-latest
