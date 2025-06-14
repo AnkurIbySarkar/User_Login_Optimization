@@ -8,3 +8,5 @@ pytest
 pytest-cov
 flake8
 httpx
+flake8
+importlib-metadata

@@ -3,7 +3,9 @@ from app.models import Base, User
 from faker import Faker
 import time
 
+
 fake = Faker()
+
 
 def seed_users(count=1000000):
     session = SessionLocal()
@@ -18,10 +20,12 @@ def seed_users(count=1000000):
         print(f"Inserted: {i + len(users)}")
     session.close()
 
+
 def init_db():
     Base.metadata.drop_all(bind=engine)
     Base.metadata.create_all(bind=engine)
     seed_users()
+
 
 if __name__ == "__main__":
     start = time.time()

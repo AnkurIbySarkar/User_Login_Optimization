@@ -1,6 +1,7 @@
 from app.database import SessionLocal
 from app.models import User
 
+
 def check_user(email: str) -> bool:
     db = SessionLocal()
     users = db.query(User).all()
