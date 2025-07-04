@@ -17,3 +17,9 @@ seed-test:
 # Run tests inside the container
 test:
 	docker-compose exec app pytest
+
+lint:
+	docker-compose exec app flake8 app tests
+
+format:
+	docker-compose exec app black .

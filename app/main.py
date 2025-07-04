@@ -1,10 +1,10 @@
 from fastapi import FastAPI
-from app.queries import brute_force
 
+from app.routes.metrics import router as metrics_router
+from app.routes.user_check import router as user_check_router
 
 app = FastAPI()
 
 
-@app.get("/brute")
-def brute_check(email: str):
-    return {"exists": brute_force.check_user(email)}
+app.include_router(user_check_router, prefix="/check")
+app.include_router(metrics_router)

@@ -1,5 +1,6 @@
 import pytest
-from app.database import engine, SessionLocal
+
+from app.database import SessionLocal, engine
 from app.models import Base, User
 
 
