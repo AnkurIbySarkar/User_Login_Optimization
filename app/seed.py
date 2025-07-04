@@ -1,8 +1,9 @@
-from app.database import engine, SessionLocal
-from app.models import Base, User
-from faker import Faker
 import time
 
+from faker import Faker
+
+from app.database import SessionLocal, engine
+from app.models import Base, User
 
 fake = Faker()
 

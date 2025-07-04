@@ -10,3 +10,7 @@ flake8
 httpx
 flake8
 importlib-metadata
+redis
+streamlit
+fakeredis
+black
